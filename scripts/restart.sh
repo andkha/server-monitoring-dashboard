@@ -8,7 +8,7 @@ set -e
 echo "🔄 Restarting Server Monitoring Dashboard..."
 
 # Restart services
-docker-compose restart
+docker compose restart
 
 echo ""
 echo "✅ Monitoring stack has been restarted."

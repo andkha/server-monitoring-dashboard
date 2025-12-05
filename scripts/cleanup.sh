@@ -20,7 +20,7 @@ if [[ ! $REPLY =~ ^[Yy][Ee][Ss]$ ]]; then
 fi
 
 # Stop and remove containers and volumes
-docker-compose down -v
+docker compose down -v
 
 echo ""
 echo "✅ Cleanup complete!"

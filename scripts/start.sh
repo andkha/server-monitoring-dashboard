@@ -18,11 +18,11 @@ mkdir -p prometheus grafana/provisioning/datasources grafana/provisioning/dashbo
 
 # Pull latest images
 echo "📦 Pulling latest images..."
-docker-compose pull
+docker compose pull
 
 # Start services
 echo "🔧 Starting services..."
-docker-compose up -d
+docker compose up -d
 
 # Wait for services to be ready
 echo "⏳ Waiting for services to start..."
@@ -31,7 +31,7 @@ sleep 5
 # Check service status
 echo ""
 echo "📊 Service Status:"
-docker-compose ps
+docker compose ps
 
 echo ""
 echo "✅ Monitoring stack is up and running!"

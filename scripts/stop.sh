@@ -8,7 +8,7 @@ set -e
 echo "🛑 Stopping Server Monitoring Dashboard..."
 
 # Stop services
-docker-compose down
+docker compose down
 
 echo ""
 echo "✅ Monitoring stack has been stopped."
