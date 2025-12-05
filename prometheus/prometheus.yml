@@ -1,0 +1,56 @@
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+  external_labels:
+    monitor: 'server-monitoring'
+
+# Alertmanager configuration
+alerting:
+  alertmanagers:
+    - static_configs:
+        - targets:
+            - alertmanager:9093
+
+# Load rules once and periodically evaluate them
+rule_files:
+  - "alerts.yml"
+
+# Scrape configurations
+scrape_configs:
+  # Prometheus self-monitoring
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
+        labels:
+          instance: 'monitoring-server'
+          environment: 'production'
+
+  # Monitoring server node_exporter (running on host)
+  - job_name: 'node-exporter-monitoring'
+    static_configs:
+      - targets: ['localhost:9100']
+        labels:
+          instance: 'monitoring-server'
+          environment: 'production'
+
+  # Remote servers node_exporter
+  # Add your remote servers here
+  - job_name: 'node-exporter-remote'
+    static_configs:
+      # VPN server 1
+      - targets: ['66.29.156.116:9100']
+        labels:
+          instance: 'vpn-server-1'
+          environment: 'production'
+      - targets: ['66.29.156.121:9100']
+        labels:
+          instance: 'vpn-server-2'
+          environment: 'production'
+      - targets: ['localhost:9100']
+        labels:
+          instance: 'vpn-server-3'
+          environment: 'production'
+      - targets: ['159.198.40.222:9100']
+        labels:
+          instance: 'ardentis-dev-server'
+          environment: 'production'
