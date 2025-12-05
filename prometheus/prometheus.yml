@@ -28,7 +28,7 @@ scrape_configs:
   # Monitoring server node_exporter (running on host)
   - job_name: 'node-exporter-monitoring'
     static_configs:
-      - targets: ['172.17.0.1:9100']  # host gateway IP for Linux Docker bridge
+      - targets: ['172.18.0.1:9100']  # host gateway IP for monitoring network
         labels:
           instance: 'monitoring-server'
           environment: 'production'
