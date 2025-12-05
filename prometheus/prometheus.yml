@@ -28,7 +28,7 @@ scrape_configs:
   # Monitoring server node_exporter (running on host)
   - job_name: 'node-exporter-monitoring'
     static_configs:
-      - targets: ['localhost:9100']
+      - targets: ['host.docker.internal:9100']
         labels:
           instance: 'monitoring-server'
           environment: 'production'
@@ -45,10 +45,6 @@ scrape_configs:
       - targets: ['66.29.156.121:9100']
         labels:
           instance: 'vpn-server-2'
-          environment: 'production'
-      - targets: ['localhost:9100']
-        labels:
-          instance: 'vpn-server-3'
           environment: 'production'
       - targets: ['159.198.40.222:9100']
         labels:
